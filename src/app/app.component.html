@@ -1,0 +1,47 @@
+<div class="password-container">
+  <p class="subtitle">Create strong and secure passwords to keep your account safe online.</p>
+
+  <!--  <div class="illustration">-->
+  <!--    <img src="img.svg" alt="Secure" width="300" height="300" />-->
+  <!--  </div>-->
+
+  <div class="password-box">
+    <input type="text" [value]="password" readonly/>
+    <!--    <span class="strength" *ngIf="password">Very strong</span>-->
+    <button class="reload" (click)="generateFromApi()">
+      <span>↻</span>
+    </button>
+  </div>
+
+  <div class="button-group">
+    <button class="copy-btn" (click)="copyToClipboard()">
+      {{ copyLabel }}
+    </button>
+
+    <button class="generate-btn" (click)="generateFromApi()" [disabled]="loading">
+      <span *ngIf="!loading">Generate</span>
+      <span *ngIf="loading" class="spinner"></span>
+    </button>
+
+  </div>
+
+  <div class="tooltip success" *ngIf="copied">
+    <span>Copied to clipboard</span>
+  </div>
+  <div class="length-selector">
+    <label>Password length: <strong>{{ length }}</strong></label>
+    <div class="slider-group">
+      <button (click)="decreaseLength()">−</button>
+      <input type="range" [(ngModel)]="length" min="4" max="50"/>
+      <button (click)="increaseLength()">+</button>
+    </div>
+  </div>
+
+  <div class="character-options">
+    <label>Characters used:</label>
+    <div class="options">
+      <label><input type="checkbox" [(ngModel)]="includeNumbers" /> 123</label>
+      <label><input type="checkbox" [(ngModel)]="includeSymbols" /> #$&</label>
+    </div>
+  </div>
+</div>
