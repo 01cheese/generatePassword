@@ -57,7 +57,7 @@ export class AppComponent {
     const numbers = this.includeNumbers ? 'on' : 'off';
     const special = this.includeSymbols ? 'on' : 'off';
 
-    const url = `http://localhost:3000/api/password?length=${this.length}` +
+    const url = `https://generate-passwords-server.onrender.com/api/password?length=${this.length}` +
       `&special=${this.includeSymbols ? 'on' : 'off'}` +
       `&numbers=${this.includeNumbers ? 'on' : 'off'}` +
       `&upper=on&lower=on`;
